@@ -2,12 +2,13 @@ package store
 
 import (
 	"context"
-	"database/sql"
 	"errors"
 	"fmt"
 	"time"
 
 	db "go-learn/gin-crud/db/sqlc"
+
+	_ "github.com/lib/pq" // PostgreSQL driver
 )
 
 // BorrowBookParams contains the parameters for borrowing a book
@@ -19,7 +20,7 @@ type BorrowBookParams struct {
 
 
 // BorrowBookResult contains the result of the borrow transaction
-type BorrowBookResult {
+type BorrowBookResult struct {
 	Book db.Book `json:"book"`
 	Loan db.Loan `json:"loan"`
 }
